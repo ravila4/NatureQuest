@@ -153,14 +153,12 @@ async function searchObservations() {
                 popupAnchor: [0, -16]
             });
 
-            // Function to get the appropriate image URL
             const getImageUrl = (photo) => {
                 if (!photo) return null;
                 const url = photo.url;
                 return url.replace('/square.', '/thumb.');
             };
 
-            // Function to get the appropriate species name
             const getSpeciesName = (obs) => {
                 if (obs.taxon && obs.taxon.preferred_common_name) {
                     return obs.taxon.preferred_common_name;
