@@ -1,24 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;600&display=swap');
+
 :root {
     --primary-color: #2E8B57;
-    --secondary-color:  #3CB371;
+    --secondary-color: #3CB371;
     --text-color: #333;
     --background-color: #f4f4f4;
     --padding: 1rem;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    color: var(--text-color);
-    background-color: var(--background-color);
-}
-
-.container {
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
 }
 
 header {
@@ -27,6 +14,47 @@ header {
     padding: var(--padding);
     text-align: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.header-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .header-subtitle {
+        font-size: 1rem;
+    }
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
 }
 
 .content {
@@ -110,7 +138,7 @@ button:hover {
 .observation-popup {
     width: 250px;
     padding: 10px;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .observation-popup h3 {
