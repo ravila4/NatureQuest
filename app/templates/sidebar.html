@@ -1,0 +1,52 @@
+<nav id="sidebar" class="sidebar">
+    <button id="toggle-sidebar" onclick="toggleSidebar()"
+        aria-label="Toggle sidebar">☰</button>
+    <div class="sidebar-content">
+        <div class="sidebar-section">
+            <h3 onclick="toggleSection(this)">🔍 Location Search</h3>
+            <div class="section-content">
+                <div class="input-group">
+                    <input type="text" id="locationSearch"
+                        placeholder="Enter a location..."
+                        aria-label="Search location">
+                    <button onclick="searchLocation()"
+                        aria-label="Search for location">Search</button>
+                </div>
+                <div class="input-group">
+                    <button onclick="useMyLocation()"
+                        aria-label="Use my current location">Use My
+                        Location</button>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h3 onclick="toggleSection(this)">🧭 Trails</h3>
+            <div class="section-content">
+                <div class="input-group">
+                    <button onclick="findNearbyTrails()"
+                        aria-label="Find nearby trails">Find Nearby
+                        Trails</button>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h3 onclick="toggleSection(this)">🍃 Observations</h3>
+            <div class="section-content">
+                <div class="input-group">
+                    <input type="text" id="speciesSearch"
+                        placeholder="Enter a species..."
+                        aria-label="Search species">
+                    <button onclick="searchObservations()"
+                        aria-label="Search for observations">Search
+                        Observations</button>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h3 onclick="toggleSection(this)">🗺️ Trail Planning</h3>
+            <div class="section-content">
+                <p>Trail planning features coming soon!</p>
+            </div>
+        </div>
+    </div>
+</nav>
