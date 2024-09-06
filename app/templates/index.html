@@ -17,10 +17,8 @@
                 <h1 class="header-title">Nature Quest</h1>
                 <p class="header-subtitle">Trail Explorer</p>
             </header>
-            <div class="content">
-                <div id="map"></div>
-                {% include 'sidebar.html' %}
-            </div>
+            <div id="map"></div>
+            {% include 'dock.html' %}
         </div>
 
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -31,7 +29,6 @@
         <script type="text/javascript"
             src="https://rawgit.com/jieter/Leaflet.encoded/master/Polyline.encoded.js"></script>
         <script src="{{ url_for('static', filename='js/map.js') }}"></script>
-        <script
-            src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/dock.js') }}"></script>
     </body>
 </html>
