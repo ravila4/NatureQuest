@@ -32,13 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Attach event listeners to buttons
-    document.getElementById('searchLocationBtn').addEventListener('click', function () {
-        const locationInput = document.getElementById('locationSearch').value;
-        if (locationInput) {
-            searchLocation(locationInput);
-        } else {
-            alert('Please enter a location to search.');
+    // Attach event listeners to elements
+    document.getElementById('locationSearch').addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const locationInput = document.getElementById('locationSearch').value;
+            if (locationInput) {
+                searchLocation(locationInput);
+            } else {
+                alert('Please enter a location to search.');
+            }
         }
     });
 
@@ -46,9 +49,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('findNearbyTrailsBtn').addEventListener('click', findNearbyTrails);
 
-    document.getElementById('searchObservationsBtn').addEventListener('click', function () {
-        const speciesInput = document.getElementById('speciesSearch').value;
-        searchObservations(speciesInput);
+    document.getElementById('speciesSearch').addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const speciesInput = document.getElementById('speciesSearch').value;
+            if (speciesInput) {
+                searchObservations(speciesInput);
+            } else {
+                alert('Please enter a species to search.');
+            }
+        }
     });
 
     // Close panels when clicking outside
