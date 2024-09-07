@@ -7,7 +7,10 @@
     --background-color: rgba(244, 244, 244, 0.9);
     --dock-size: 60px;
     --panel-width: 300px;
-    --padding: 1rem;
+    --padding-small: 10px;
+    --padding-medium: 15px;
+    --padding-large: 20px;
+    --dock-panel-gap: 20px;
 }
 
 body, html {
@@ -61,7 +64,7 @@ header {
     z-index: 1000;
     background-color: var(--background-color);
     border-radius: 15px;
-    padding: 10px;
+    padding: var(--padding-small);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -73,9 +76,12 @@ header {
     color: white;
     font-size: 24px;
     border-radius: 12px;
-    margin: 0 5px;
+    margin: var(--padding-small);
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dock-item:hover, .dock-item.active {
@@ -95,7 +101,7 @@ header {
 
 .panel {
     display: none;
-    padding: 20px;
+    padding: var(--padding-large);
 }
 
 .panel.active {
@@ -104,6 +110,7 @@ header {
 
 .panel h3 {
     margin-top: 0;
+    margin-bottom: var(--padding-medium);
     color: var(--primary-color);
 }
 
@@ -113,10 +120,11 @@ header {
 }
 
 input, button {
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: var(--padding-medium);
+    padding: var(--padding-medium);
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 button {
@@ -134,12 +142,12 @@ button:hover {
 @media (min-width: 769px) {
     .dock {
         flex-direction: column;
-        right: 20px;
+        right: var(--padding-large);
         top: 50%;
         transform: translateY(-50%);
     }
     .panels {
-        right: 100px;
+        right: calc(var(--dock-size) + var(--padding-large) * 3 + var(--dock-panel-gap));
         top: 50%;
         transform: translateY(-50%);
     }
@@ -148,21 +156,21 @@ button:hover {
 @media (max-width: 768px) {
     .dock {
         flex-direction: row;
-        bottom: 20px;
+        bottom: var(--padding-large);
         left: 50%;
         transform: translateX(-50%);
     }
     .panels {
-        bottom: 100px;
+        bottom: calc(var(--dock-size) + var(--padding-large) * 3 + var(--dock-panel-gap));
         left: 50%;
         transform: translateX(-50%);
         width: 90%;
         max-width: none;
     }
-    .header-title {
-        font-size: 2rem;
+    .panel {
+        padding: var(--padding-medium);
     }
-    .header-subtitle {
-        font-size: 1rem;
+    input, button {
+        padding: var(--padding-small);
     }
 }
