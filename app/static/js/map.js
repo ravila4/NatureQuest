@@ -160,7 +160,7 @@ async function searchObservations() {
             };
 
             const getSpeciesName = (obs) => {
-                if (obs.taxon && obs.taxon.preferred_common_name) {
+                if (obs.taxon?.preferred_common_name) {
                     return obs.taxon.preferred_common_name;
                 } else if (obs.species_guess) {
                     return `${obs.species_guess}? <i class="fas fa-question-circle" title="Species guess"></i>`;
@@ -176,7 +176,7 @@ async function searchObservations() {
                 .bindPopup(`
                     <div class="observation-popup">
                         <h3>${speciesName}</h3>
-                        ${obs.taxon && obs.taxon.name ? `<p><em>${obs.taxon.name}</em></p>` : ''}
+                        ${obs.taxon?.taxon.name ? `<p><em>${obs.taxon.name}</em></p>` : ''}
                         <p style="color: #888;">Observed on: ${obs.observed_on}</p>
                         ${imageUrl ? `<img src="${imageUrl}" alt="${speciesName}">` : ''}
                         <a href="${obs.uri}" target="_blank">View on iNaturalist</a>
