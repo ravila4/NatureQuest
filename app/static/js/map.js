@@ -23,8 +23,8 @@ function addMarkers() {
 function centerMapOnUser() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            var userLat = position.coords.latitude;
-            var userLon = position.coords.longitude;
+            let userLat = position.coords.latitude;
+            let userLon = position.coords.longitude;
             initMap({ lat: userLat, lon: userLon }, 13);
             L.marker([userLat, userLon]).addTo(map)
                 .bindPopup('You are here!')
@@ -64,8 +64,8 @@ function searchLocation(query) {
 function useMyLocation() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            var lat = position.coords.latitude;
-            var lon = position.coords.longitude;
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
             map.setView([lat, lon], 13);
             L.marker([lat, lon]).addTo(map)
                 .bindPopup('You are here!')
