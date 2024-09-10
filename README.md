@@ -26,14 +26,19 @@ NatureQuest/
 │   │   ├── strava_service.py
 │   │   └── inaturalist_service.py
 │   ├── static/
-│   |   ├── assets/iconic_taxa/
+│   │   ├── assets/
+│   │   │   └── iconic_taxa/
 │   │   ├── css/
-│   │   │   └── style.css
+│   │   │   └── main.css
 │   │   └── js/
+│   │       ├── dock.js
 │   │       └── map.js
-│   └── templates/knowledge
+│   └── templates/
+│       ├── dock.html
 │       └── index.html
 ├── config.py
+├── requirements.txt
+├── README.md
 └── run.py
 ```
 
