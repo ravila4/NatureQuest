@@ -49,7 +49,7 @@ function searchLocation(query) {
                 let result = data[0];
                 initMap({ lat: result.lat, lon: result.lon }, 13);
                 L.marker([result.lat, result.lon]).addTo(map)
-                    .bindPopup(result.display_name)
+                    .bindPopup(`<div class="location-popup"><h3>${result.display_name}</h3></div>`)
                     .openPopup();
             } else {
                 alert('Location not found');
@@ -68,8 +68,6 @@ function useMyLocation() {
             let lon = position.coords.longitude;
             map.setView([lat, lon], 13);
             L.marker([lat, lon]).addTo(map)
-                .bindPopup('You are here!')
-                .openPopup();
         }, function (error) {
             console.error("Error: " + error.message);
             alert("Unable to retrieve your location");
@@ -78,7 +76,6 @@ function useMyLocation() {
         alert("Geolocation is not supported by your browser");
     }
 }
-
 
 function findNearbyTrails() {
     const bounds = map.getBounds();
@@ -99,10 +96,13 @@ function findNearbyTrails() {
                 }).addTo(segmentLayer);
 
                 polyline.bindPopup(`
-                    <strong>${segment.name}</strong><br>
-                    Distance: ${(segment.distance / 1000).toFixed(2)} km<br>
-                    Avg Grade: ${segment.avg_grade.toFixed(1)}%<br>
-                    Elev Difference: ${segment.elev_difference.toFixed(1)}m
+                    <div class="trail-popup">
+                        <h3>${segment.name}</h3>
+                        <p>Distance: ${(segment.distance / 1000).toFixed(2)} km<br>
+                           Avg Grade: ${segment.avg_grade.toFixed(1)}%<br>
+                           Elev Difference: ${segment.elev_difference.toFixed(1)}m
+                        </p>
+                    </div>
                 `);
             });
 
@@ -131,6 +131,12 @@ function getIconUrl(iconicTaxonName) {
     return folderPath + (iconMapping[iconicTaxonName] || 'unknown-32px.png');
 }
 
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+};
+
 async function searchObservations() {
     const species = document.getElementById('speciesSearch').value;
     const bounds = map.getBounds();
@@ -156,32 +162,40 @@ async function searchObservations() {
             const getImageUrl = (photo) => {
                 if (!photo) return null;
                 const url = photo.url;
-                return url.replace('/square.', '/thumb.');
+                return url;
             };
 
             const getSpeciesName = (obs) => {
                 if (obs.taxon?.preferred_common_name) {
-                    return obs.taxon.preferred_common_name;
+                    return obs.taxon.preferred_common_name.charAt(0).toUpperCase() + obs.taxon.preferred_common_name.slice(1);
                 } else if (obs.species_guess) {
                     return `${obs.species_guess}? <i class="fas fa-question-circle" title="Species guess"></i>`;
+                } else if (obs.taxon?.name) {
+                    return obs.taxon.name.charAt(0).toUpperCase() + obs.taxon.name.slice(1);
                 } else {
                     return 'Unknown Species';
                 }
             };
 
             const imageUrl = obs.photos && obs.photos.length > 0 ? getImageUrl(obs.photos[0]) : null;
-            const speciesName = getSpeciesName(obs);
 
             L.marker([latitude, longitude], { icon: customIcon }).addTo(map)
                 .bindPopup(`
-                    <div class="observation-popup">
-                        <h3>${speciesName}</h3>
-                        ${obs.taxon?.taxon.name ? `<p><em>${obs.taxon.name}</em></p>` : ''}
-                        <p style="color: #888;">Observed on: ${obs.observed_on}</p>
-                        ${imageUrl ? `<img src="${imageUrl}" alt="${speciesName}">` : ''}
-                        <a href="${obs.uri}" target="_blank">View on iNaturalist</a>
-                    </div>
-                `);
+            <div class="observation-popup">
+              <h3>${getSpeciesName(obs)}</h3>
+              <div class="observation-content">
+                ${imageUrl ? `<img src="${imageUrl}" alt="${getSpeciesName(obs)}" class="observation-image">` : ''}
+                <div class="observation-details">
+                  ${obs.taxon?.name ? `<p class="scientific-name">${obs.taxon.name}</p>` : ''}
+                  <div class="observation-date">
+                    <img src="/static/assets/icons/calendar_2_line.svg" alt="Calendar Icon"/>
+                    <span>${formatDate(obs.observed_on)}</span>
+                  </div>
+                </div>
+              </div>
+              <a href="${obs.uri}" target="_blank">View on iNaturalist</a>
+            </div>
+            `);
         }
     } catch (error) {
         console.error('Error:', error);

@@ -5,6 +5,7 @@
     --secondary-color: #3CB371;
     --text-color: #333;
     --background-color: rgba(244, 244, 244, 0.9);
+    --light-text-color: #666; /* Adjust this to match your desired light text color */
     --dock-size: 60px;
     --panel-width: 300px;
     --padding-small: 10px;
@@ -173,4 +174,124 @@ button:hover {
     input, button {
         padding: var(--padding-small);
     }
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 0;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    width: 280px !important; /* Adjust as needed */
+}
+
+.leaflet-popup-tip {
+    background-color: white;
+}
+
+.observation-popup {
+    padding: var(--padding-medium);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.observation-popup h3 {
+    margin: 0 0 var(--padding-small);
+    color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.observation-popup p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: var(--padding-small);
+}
+
+.observation-popup em {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.observation-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--padding-small);
+}
+
+.observation-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.observation-details {
+    flex: 1;
+}
+
+.observation-date {
+    display: flex;
+    align-items: center;
+    color: var(--light-text-color);
+    font-size: 0.9rem;
+    margin-bottom: var(--padding-small);
+}
+
+.observation-date img {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.observation-popup a {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: var(--padding-medium) var(--padding-medium);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: var(--padding-small);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.observation-popup a:hover {
+    background-color: var(--secondary-color);
+}
+
+.scientific-name {
+    color: #4a4a4a;
+    font-style: italic;
+}
+
+/* Custom classes for trail and location popups */
+.trail-popup, .location-popup {
+    padding: var(--padding-medium);
+    font-family: 'Poppins', sans-serif;
+}
+
+.trail-popup h3, .location-popup h3 {
+    margin: 0 0 var(--padding-small);
+    color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.trail-popup p, .location-popup p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: var(--padding-small);
 }
