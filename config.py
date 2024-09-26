@@ -1,5 +1,8 @@
+import os
+
 class Config:
-    DEBUG = True
-    STRAVA_CLIENT_ID = "133224"
-    STRAVA_CLIENT_SECRET = "93e342fc5910c649cb9c99a43a6320d4b07862d7"
-    STRAVA_REFRESH_TOKEN = "21ed26026401a9ec98decbad077f52ddbefc70f6"
+    DEBUG = bool(os.getenv('DEBUG', False))
+    # Strava API credentials
+    STRAVA_CLIENT_ID = os.getenv('STRAVA_CLIENT_ID')
+    STRAVA_CLIENT_SECRET = os.getenv('STRAVA_CLIENT_SECRET')
+    STRAVA_REFRESH_TOKEN = os.getenv('STRAVA_REFRESH_TOKEN')
