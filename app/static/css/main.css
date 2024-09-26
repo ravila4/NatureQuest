@@ -143,12 +143,12 @@ button:hover {
 @media (min-width: 769px) {
     .dock {
         flex-direction: column;
-        right: var(--padding-large);
+        left: var(--padding-large);
         top: 50%;
         transform: translateY(-50%);
     }
     .panels {
-        right: calc(var(--dock-size) + var(--padding-large) * 3 + var(--dock-panel-gap));
+        left: calc(var(--dock-size) + var(--padding-large) * 3 + var(--dock-panel-gap));
         top: 50%;
         transform: translateY(-50%);
     }
