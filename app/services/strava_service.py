@@ -7,6 +7,8 @@ def get_access_token():
     client_id = current_app.config["STRAVA_CLIENT_ID"]
     client_secret = current_app.config["STRAVA_CLIENT_SECRET"]
     refresh_token = current_app.config["STRAVA_REFRESH_TOKEN"]
+    if not client_id or not client_secret or not refresh_token:
+        raise ValueError("Strava credentials not set")
 
     response = requests.post(
         url="https://www.strava.com/oauth/token",
