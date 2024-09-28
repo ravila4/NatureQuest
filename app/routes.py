@@ -3,9 +3,9 @@ from flask import jsonify, render_template, request, send_from_directory
 
 from app.services import inaturalist_service, strava_service
 
+# Zion National Park
+DEFAULT_CENTER = {"lat": 36.4175, "lon": -112.0079, "zoom": 11}
 
-# Define default data
-DEFAULT_CENTER = {"lat": 40.7128, "lon": -74.0060, "zoom": 13}
 DEFAULT_MARKERS = []
 
 
